@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Profile, Experience, Education, Skill, Achievement } from '../types';
 import TimelineItem from '../components/TimelineItem';
 import SkillBadge from '../components/SkillBadge';
@@ -13,37 +13,106 @@ interface ExperienceData {
 }
 
 const AboutPage: React.FC = () => {
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [experienceData, setExperienceData] = useState<ExperienceData | null>(null);
-  const [skills, setSkills] = useState<Skill[]>([]);
-  const [achievements, setAchievements] = useState<Achievement[]>([]);
-  const [loading, setLoading] = useState(true);
+  const profile: Profile = {
+    name: "Aathilingam",
+    title: "Software Developer",
+    tagline: "Hello. I'm Aathilingam",
+    bio: "With 4+ years of building large-scale SaaS and high-performance APIs (Laravel, Lumen, and MSS), specialized in building optimized architecture, and complex third-party integrations.",
+    email: "aathilingam1999@gmail.com",
+    github: "https://github.com/aathik7",
+    linkedin: "https://www.linkedin.com/in/aathilingam",
+    resumeUrl: "#",
+    avatarUrl: "https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  };
+
+  const experienceData: ExperienceData = {
+    work: [
+      {
+        role: "Software Developer",
+        company: "Billion Careers (Quess)",
+        period: "Sep 2023 - Present",
+        description: [
+          "Responsible for ensuring a blazing-fast, intuitive homepage user experience, by optimizing page load performance and scalability through Laravel Livewire, caching, and microservices.",
+          "Engineered highly-sensitive Fintech/Loan Partner Integration and built the Core Lead Validation Engine with a robust validation system in Lumen.",
+          "Built the flagship Subscription plan with Payroll Deduction modules and Payment Gateway modules i.e., with Razorpay, streamlining user purchase experience across mobile/desktop.",
+          "Handled complicated cross application synchronization techniques and delivered the MVP in a 6-week period and facilitated Customer Success features for the business team for the Rewards & Recognition Platform."
+        ],
+        icon: "briefcase"
+      },
+      {
+        role: "Associate Software Developer",
+        company: "Heptagon Technologies (Quess)",
+        period: "Oct 2021 - Aug 2023",
+        description: [
+          "Delivered RESTful APIs with Laravel and Lumen, integrated third-party BGV systems, and enhanced system uptime by optimizing queries and database monitoring for the Paperless Onboarding Platform.",
+          "Contributed to scalable API architecture, data consistency, and faster deployment cycles for the HR Management Platform."
+        ],
+        icon: "briefcase"
+      }
+    ],
+    education: [
+      {
+        degree: "MCA, Computer Applications",
+        institution: "Sree Saraswathi Thyagaraja College, Pollachi",
+        period: "2019 - 2021",
+        icon: "graduationCap"
+      },
+      {
+        degree: "B.Sc, Computer Science",
+        institution: "Sree Saraswathi Thyagaraja College, Pollachi",
+        period: "2016 - 2019",
+        icon: "graduationCap"
+      }
+    ]
+  };
+
+  const skills: Skill[] = [
+    { name: "PHP", category: "Languages" },
+    { name: "TypeScript", category: "Languages" },
+    { name: "HTML", category: "Languages" },
+    { name: "CSS", category: "Languages" },
+    { name: "Laravel", category: "Frameworks & Libraries" },
+    { name: "Lumen", category: "Frameworks & Libraries" },
+    { name: "Livewire", category: "Frameworks & Libraries" },
+    { name: "Zend", category: "Frameworks & Libraries" },
+    { name: "NodeJs", category: "Frameworks & Libraries" },
+    { name: "NestJs", category: "Frameworks & Libraries" },
+    { name: "MySQL", category: "Databases & Cloud" },
+    { name: "PostgreSQL", category: "Databases & Cloud" },
+    { name: "MongoDB", category: "Databases & Cloud" },
+    { name: "Docker", category: "Databases & Cloud" },
+    { name: "Git", category: "Tools" },
+    { name: "Jenkins", category: "Tools" },
+    { name: "Postman", category: "Tools" },
+    { name: "VSCode", category: "Tools" },
+    { name: "ChatGPT", category: "Tools" },
+    { name: "Copilot", category: "Tools" },
+    { name: "Microservices", category: "Concepts" },
+    { name: "Debugging", category: "Concepts" },
+    { name: "Vibe Coding", category: "Concepts" }
+  ];
+
+  const achievements: Achievement[] = [
+    {
+      title: "Winner of Quess Hackathon 2024",
+      description: "Contributed to AI Model design, Data pipeline creation, and API integration in building an AI-powered Visual Merchandising System with LLMs, Image Recognition, and Image Processing.",
+      icon: "award"
+    },
+    {
+      title: "Winner of Quess Global Awards 2024",
+      description: "Recognized under the Innovator Category.",
+      icon: "award"
+    },
+    {
+      title: "Finalist in Quess Global Awards 2024",
+      description: "Recognized under the All Stars Category.",
+      icon: "award"
+    }
+  ];
+
   const { theme, toggleTheme } = useTheme();
 
-  useEffect(() => {
-    Promise.all([
-      fetch('./data/profile.json').then(res => res.json()),
-      fetch('./data/experience.json').then(res => res.json()),
-      fetch('./data/skills.json').then(res => res.json()),
-      fetch('./data/achievements.json').then(res => res.json()),
-    ]).then(([profileData, experienceJson, skillsData, achievementsData]) => {
-      setProfile(profileData);
-      setExperienceData(experienceJson);
-      setSkills(skillsData);
-      setAchievements(achievementsData);
-      setLoading(false);
-    }).catch(err => console.error("Failed to load about page data:", err));
-  }, []);
-
-  if (loading || !profile || !experienceData) {
-     return (
-      <div className="flex justify-center items-center h-64">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-  
-  const SectionTitle: React.FC<{children: React.ReactNode}> = ({ children }) => (
+  const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <h2 className="text-3xl font-bold text-center mb-12 text-text-primary-light dark:text-text-primary-dark">{children}</h2>
   );
 
@@ -55,9 +124,9 @@ const AboutPage: React.FC = () => {
       {/* Bio Section */}
       <section className="flex flex-col md:flex-row items-center gap-12 px-4 animate-fade-in-up" style={{ animationDelay: '0ms' }}>
         <div className="md:w-1/3 text-center md:text-left">
-          <img 
+          <img
             src={theme === 'light' ? "/assets/images/logo_image_light.png" : "/assets/images/logo_image_dark.png"}
-            alt={profile.name} 
+            alt={profile.name}
             className="rounded-full w-35 h-80 md:w-60 md:h-80 mx-auto md:mx-0 shadow-lg border-4 border-primary/50 object-cover"
           />
         </div>
@@ -71,10 +140,10 @@ const AboutPage: React.FC = () => {
               Download Resume
             </a>
             <a href={profile.github} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-background-secondary-light dark:bg-background-secondary-dark hover:bg-border-color-light dark:hover:bg-border-color-dark transition-colors text-text-primary-light dark:text-text-primary-dark">
-              <Icons.github className="w-6 h-6"/>
+              <Icons.github className="w-6 h-6" />
             </a>
             <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-background-secondary-light dark:bg-background-secondary-dark hover:bg-border-color-light dark:hover:bg-border-color-dark transition-colors text-text-primary-light dark:text-text-primary-dark">
-              <Icons.linkedin className="w-6 h-6"/>
+              <Icons.linkedin className="w-6 h-6" />
             </a>
           </div>
         </div>
@@ -121,26 +190,26 @@ const AboutPage: React.FC = () => {
       <section className="animate-fade-in-up" style={{ animationDelay: '300ms' }}>
         <SectionTitle>Technical Skills</SectionTitle>
         <div className="max-w-6xl mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {skillCategories.map((category, index) => (
-                    <div 
-                        key={category}
-                        className="bg-background-secondary-light/50 dark:bg-background-secondary-dark/50 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-border-color-light dark:border-border-color-dark hover:shadow-md hover:border-primary/50 transition-all duration-300 hover:shadow-lg flex flex-col items-start h-full"
-                        style={{ animationDelay: `${250 + (index * 100)}ms` }}
-                    >
-                        <h3 className="text-lg font-bold mb-4 text-center text-text-primary-light dark:text-text-primary-dark border-l-4 border-primary pl-3">
-                            {category}
-                        </h3>
-                        <div className="flex flex-wrap justify-center gap-2.5">
-                            {skills.filter(s => s.category === category).map(skill => (
-                                <div key={skill.name} className="transform hover:scale-105 transition-transform duration-200">
-                                  <SkillBadge>{skill.name}</SkillBadge>
-                                </div>
-                            ))}
-                        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skillCategories.map((category, index) => (
+              <div
+                key={category}
+                className="bg-background-secondary-light/50 dark:bg-background-secondary-dark/50 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-border-color-light dark:border-border-color-dark hover:shadow-md hover:border-primary/50 transition-all duration-300 hover:shadow-lg flex flex-col items-start h-full"
+                style={{ animationDelay: `${250 + (index * 100)}ms` }}
+              >
+                <h3 className="text-lg font-bold mb-4 text-center text-text-primary-light dark:text-text-primary-dark border-l-4 border-primary pl-3">
+                  {category}
+                </h3>
+                <div className="flex flex-wrap justify-center gap-2.5">
+                  {skills.filter(s => s.category === category).map(skill => (
+                    <div key={skill.name} className="transform hover:scale-105 transition-transform duration-200">
+                      <SkillBadge>{skill.name}</SkillBadge>
                     </div>
-                ))}
-            </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

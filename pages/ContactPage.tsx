@@ -1,18 +1,21 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Profile } from '../types';
 import { Icons } from '../constants';
 
 const ContactPage: React.FC = () => {
-  const [profile, setProfile] = useState<Profile | null>(null);
+  const profile: Profile = {
+    name: "Aathilingam",
+    title: "Software Developer",
+    tagline: "Hello. I'm Aathilingam",
+    bio: "With 4+ years of building large-scale SaaS and high-performance APIs (Laravel, Lumen, and MSS), specialized in building optimized architecture, and complex third-party integrations.",
+    email: "aathilingam1999@gmail.com",
+    github: "https://github.com/aathik7",
+    linkedin: "https://www.linkedin.com/in/aathilingam",
+    resumeUrl: "#",
+    avatarUrl: "https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  };
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-
-  useEffect(() => {
-    fetch('./data/profile.json')
-      .then(res => res.json())
-      .then(data => setProfile(data))
-      .catch(err => console.error("Failed to load profile data:", err));
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -27,14 +30,6 @@ const ContactPage: React.FC = () => {
     const mailtoLink = `mailto:aathilingam1999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
   };
-  
-  if (!profile) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <p>Loading...</p>
-      </div>
-    );
-  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start max-w-6xl mx-auto py-16 md:py-24 px-4 animate-fade-in-up">
@@ -71,11 +66,11 @@ const ContactPage: React.FC = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-1 text-text-secondary-light dark:text-text-secondary-dark">Your Name</label>
-            <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-2 bg-background-primary-light dark:bg-background-primary-dark border border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:outline-none text-text-primary-light dark:text-text-primary-dark"/>
+            <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-2 bg-background-primary-light dark:bg-background-primary-dark border border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:outline-none text-text-primary-light dark:text-text-primary-dark" />
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium mb-1 text-text-secondary-light dark:text-text-secondary-dark">Your Email</label>
-            <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-background-primary-light dark:bg-background-primary-dark border border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:outline-none text-text-primary-light dark:text-text-primary-dark"/>
+            <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-background-primary-light dark:bg-background-primary-dark border border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:outline-none text-text-primary-light dark:text-text-primary-dark" />
           </div>
           <div>
             <label htmlFor="message" className="block text-sm font-medium mb-1 text-text-secondary-light dark:text-text-secondary-dark">Your Message</label>
