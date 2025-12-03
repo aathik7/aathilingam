@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Profile } from '../types';
 import { Icons } from '../constants';
@@ -15,16 +15,7 @@ const HomePage: React.FC = () => {
     "resumeUrl": "#",
     "avatarUrl": "https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   };
-  const [profile, setProfile] = useState(profileData);
-  const [loading, setLoading] = useState(false);
-
-  if (loading || !profile) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p>Loading...</p>
-      </div>
-    );
-  }
+  const profile = profileData;
 
   const techStack = [
     { name: "PHP", link: "https://www.php.net/docs.php" },
@@ -59,16 +50,16 @@ const HomePage: React.FC = () => {
           {profile.bio}
         </p>
         <div className="flex flex-wrap justify-center gap-4 mt-8">
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className="bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30 text-base"
           >
             Contact Me
           </Link>
-          <a 
+          <a
             href="assets/pdf/Aathilingam-SoftwareDev-10-25.pdf"
-            target="_blank" 
-            rel="noopener noreferrer" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-background-secondary-light dark:bg-background-secondary-dark border border-border-color-light dark:border-border-color-dark text-text-primary-light dark:text-text-primary-dark font-bold py-3 px-8 rounded-lg hover:bg-border-color-light dark:hover:bg-border-color-dark transition-colors text-base"
           >
             View Resume
@@ -93,17 +84,17 @@ const HomePage: React.FC = () => {
       {/* Tech Stack Section */}
       <section className="pt-0 pb-0 md:pb-0 border-y border-border-color-light dark:border-border-color-dark">
         <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-text-secondary-light dark:text-text-secondary-dark text-lg py-8">
-            {techStack.map(tech => (
-              <a 
-                key={tech.name} 
-                href={tech.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-all duration-300 ease-in-out hover:-translate-y-1 inline-block"
-              >
-                {tech.name}
-              </a>
-            ))}
+          {techStack.map(tech => (
+            <a
+              key={tech.name}
+              href={tech.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-all duration-300 ease-in-out hover:-translate-y-1 inline-block"
+            >
+              {tech.name}
+            </a>
+          ))}
         </div>
       </section>
 
@@ -112,18 +103,18 @@ const HomePage: React.FC = () => {
         <div className="relative">
           {/* Static Background Line */}
           <div className="absolute left-[15px] top-4 bottom-4 w-[2px] bg-border-color-light dark:bg-border-color-dark opacity-30"></div>
-          
+
           {/* Animated Beam Segments */}
           {/* Beam from Item 1 to Item 2 */}
           <div className="absolute left-[15px] top-4 h-[calc(50%-16px)] w-[2px] overflow-hidden">
-            <div 
-              className="absolute w-full h-[50%] bg-gradient-to-b from-transparent via-primary to-transparent animate-beam-flow" 
+            <div
+              className="absolute w-full h-[50%] bg-gradient-to-b from-transparent via-primary to-transparent animate-beam-flow"
               style={{ animationDelay: '0.5s', animationDuration: '1.5s', animationIterationCount: 'infinite' }}
             ></div>
           </div>
           {/* Beam from Item 2 to Item 3 */}
           <div className="absolute left-[15px] top-1/2 h-[calc(50%-16px)] w-[2px] overflow-hidden">
-             <div 
+            <div
               className="absolute w-full h-[50%] bg-gradient-to-b from-transparent via-primary to-transparent animate-beam-flow"
               style={{ animationDelay: '2.5s', animationDuration: '1.5s', animationIterationCount: 'infinite' }}
             ></div>
@@ -136,7 +127,7 @@ const HomePage: React.FC = () => {
               const delay = `${index * 2}s`;
               return (
                 <div key={service.title} className="flex items-center gap-6">
-                  <div 
+                  <div
                     className="z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-background-secondary-light dark:bg-background-secondary-dark ring-4 ring-background-primary-light dark:ring-background-primary-dark transition-colors duration-300 animate-icon-shine"
                     style={{ animationDelay: delay }}
                   >
@@ -151,24 +142,24 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col gap-6 text-left">
-            <h2 className="text-4xl font-bold text-text-primary-light dark:text-text-primary-dark">About me</h2>
-            <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
-                {profile.bio}
-            </p>
-            <div className="grid grid-cols-3 gap-4 text-center mt-4">
-                <div>
-                    <p className="text-4xl font-bold text-primary">4+</p>
-                    <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm">Years of Experience</p>
-                </div>
-                <div>
-                    <p className="text-4xl font-bold text-primary">20+</p>
-                    <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm">Technologies Mastered</p>
-                </div>
-                <div>
-                    <p className="text-4xl font-bold text-primary">3</p>
-                    <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm">Awards Won</p>
-                </div>
+          <h2 className="text-4xl font-bold text-text-primary-light dark:text-text-primary-dark">About me</h2>
+          <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
+            {profile.bio}
+          </p>
+          <div className="grid grid-cols-3 gap-4 text-center mt-4">
+            <div>
+              <p className="text-4xl font-bold text-primary">4+</p>
+              <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm">Years of Experience</p>
             </div>
+            <div>
+              <p className="text-4xl font-bold text-primary">20+</p>
+              <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm">Technologies Mastered</p>
+            </div>
+            <div>
+              <p className="text-4xl font-bold text-primary">3</p>
+              <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm">Awards Won</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
