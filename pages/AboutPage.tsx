@@ -125,7 +125,7 @@ const AboutPage: React.FC = () => {
       <section className="flex flex-col md:flex-row items-center gap-12 px-4 animate-fade-in-up" style={{ animationDelay: '0ms' }}>
         <div className="md:w-1/3 text-center md:text-left">
           <img
-            src={theme === 'light' ? "/assets/images/logo_image_light.png" : "/assets/images/logo_image_dark.png"}
+            src={theme === 'light' ? "/assets/images/logo_image_light_trim.jpg" : "/assets/images/logo_image_dark_trim.jpg"}
             alt={profile.name}
             className="rounded-full w-35 h-80 md:w-60 md:h-80 mx-auto md:mx-0 shadow-lg border-4 border-primary/50 object-cover"
           />
