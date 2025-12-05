@@ -99,7 +99,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* About & Services Section */}
-      <section className="grid md:grid-cols-2 gap-16 pt-8 pb-12 md:pb-20">
+      <section className="grid md:grid-cols-2 gap-16 pt-8 pb-12 md:pb-20 px-4 sm:px-0">
         <div className="relative">
           {/* Static Background Line */}
           <div className="absolute left-[15px] top-4 bottom-4 w-[2px] bg-border-color-light dark:bg-border-color-dark opacity-30"></div>
