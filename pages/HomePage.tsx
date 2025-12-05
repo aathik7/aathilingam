@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
     "name": "Aathilingam",
     "title": "Software Developer",
     "tagline": "Hello. I'm Aathilingam",
-    "bio": "With 4+ years of building large-scale SaaS and high-performance APIs (Laravel, Lumen, and MSS), specialized in building optimized architecture, and complex third-party integrations.",
+    "bio": "With 4+ years of building large-scale SaaS and high-performance APIs, specialized in building optimized architecture, and complex third-party integrations.",
     "email": "aathilingam1999@gmail.com",
     "github": "https://github.com/aathik7",
     "linkedin": "https://www.linkedin.com/in/aathilingam",
@@ -21,13 +21,13 @@ const HomePage: React.FC = () => {
     { name: "PHP", link: "https://www.php.net/docs.php" },
     { name: "Laravel", link: "https://laravel.com/docs" },
     { name: "Lumen", link: "https://lumen.laravel.com/docs" },
+    { name: "NodeJs", link: "https://nodejs.org/en/docs/" },
+    { name: "NestJs", link: "https://docs.nestjs.com/" }
     { name: "MySQL", link: "https://dev.mysql.com/doc/" },
     { name: "PostgreSQL", link: "https://www.postgresql.org/docs/" },
     { name: "Docker", link: "https://docs.docker.com/" },
     { name: "Git", link: "https://git-scm.com/doc" },
     { name: "TypeScript", link: "https://www.typescriptlang.org/docs/" },
-    { name: "NodeJs", link: "https://nodejs.org/en/docs/" },
-    { name: "NestJs", link: "https://docs.nestjs.com/" }
   ];
 
   const services = [
