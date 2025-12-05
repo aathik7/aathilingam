@@ -32,8 +32,8 @@ const AboutPage: React.FC = () => {
         company: "Billion Careers (Quess)",
         period: "Sep 2023 - Present",
         description: [
-          "Responsible for ensuring a blazing-fast, intuitive homepage user experience, by optimizing page load performance and scalability through Laravel Livewire, caching, and microservices.",
-          "Engineered highly-sensitive Fintech/Loan Partner Integration and built the Core Lead Validation Engine with a robust validation system in Lumen.",
+          "Responsible for ensuring a blazing-fast, intuitive homepage user experience, by optimizing page load performance and scalability through Laravel Livewire, React, caching, and microservices.",
+          "Engineered highly-sensitive Fintech/Loan Partner Integration and built the Core Lead Validation Engine with a robust validation system.",
           "Built the flagship Subscription plan with Payroll Deduction modules and Payment Gateway modules i.e., with Razorpay, streamlining user purchase experience across mobile/desktop.",
           "Handled complicated cross application synchronization techniques and delivered the MVP in a 6-week period and facilitated Customer Success features for the business team for the Rewards & Recognition Platform."
         ],
@@ -44,7 +44,7 @@ const AboutPage: React.FC = () => {
         company: "Heptagon Technologies (Quess)",
         period: "Oct 2021 - Aug 2023",
         description: [
-          "Delivered RESTful APIs with Laravel and Lumen, integrated third-party BGV systems, and enhanced system uptime by optimizing queries and database monitoring for the Paperless Onboarding Platform.",
+          "Delivered RESTful APIs with Laravel, Lumen, NodeJs and NestJs, integrated third-party BGV systems, and enhanced system uptime by optimizing queries and database monitoring for the Paperless Onboarding Platform.",
           "Contributed to scalable API architecture, data consistency, and faster deployment cycles for the HR Management Platform."
         ],
         icon: "briefcase"
