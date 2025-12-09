@@ -20,9 +20,9 @@ const HomePage: React.FC = () => {
   const techStack = [
     { name: "PHP", link: "https://www.php.net/docs.php" },
     { name: ".NET", link: "https://docs.microsoft.com/en-us/dotnet/" },
-    { name: "Laravel", link: "https://laravel.com/docs" },
-    { name: "NodeJs", link: "https://nodejs.org/en/docs/" },
     { name: "ReactJS", link: "https://reactjs.org/docs/getting-started.html" },
+    { name: "NodeJs", link: "https://nodejs.org/en/docs/" },
+    { name: "Laravel", link: "https://laravel.com/docs" },
     { name: "MySQL", link: "https://dev.mysql.com/doc/" },
     { name: "PostgreSQL", link: "https://www.postgresql.org/docs/" },
     { name: "Docker", link: "https://docs.docker.com/" },
